@@ -1,0 +1,161 @@
+﻿<Window x:Class="WPF_SE150420_VoTuanKhanh.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_SE150420_VoTuanKhanh"
+        mc:Ignorable="d"
+        Title="Admin" Height="450" Width="800"
+        x:Name="AdminPage">
+    <Grid>
+        <TabControl>
+            <TabItem Header="User Management">
+                <Grid x:Name="UserManagePage">
+                    <Label Content="Search user" HorizontalAlignment="Left" Margin="132,57,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.657,0.179"/>
+                    <TextBox HorizontalAlignment="Right" Margin="0,57,261,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="316" Height="26" VerticalContentAlignment="Center" x:Name="UserNameSearch"/>
+                    <Button Content="Search" HorizontalAlignment="Left" Margin="544,57,0,0" VerticalAlignment="Top" Height="26" Width="54" x:Name="SearchUserBtn" Click="SearchUserBtn_Click">
+
+                    </Button>
+
+                    <DataGrid Margin="132,0,0,0" Width="{Binding ActualWidth, ElementName=GridPanel}" AutoGenerateColumns="False" x:Name="UserDataGrid" Height="204" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Username" Binding="{Binding UserId}" x:Name="Username">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Password" Binding="{Binding UserPassword}" x:Name="Password">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Fullname" Binding="{Binding UserFullName}" x:Name="Fullname">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Role" Binding="{Binding UserRole}" x:Name="Role">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Delete" Click="DeleteUserBtn_Click" x:Name="DeleteUserBtn"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Book Management">
+                <Grid x:Name="BookManagePage" Margin="-2,0,2,0">
+                    <Label Content="Search book" HorizontalAlignment="Left" Margin="46,57,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.657,0.179"/>
+                    <TextBox Margin="0,57,342,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="26" VerticalContentAlignment="Center" x:Name="BookSearchTxt" HorizontalAlignment="Right" Width="316"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="473,57,0,0" VerticalAlignment="Top" Height="26" Width="120" RenderTransformOrigin="0.27,0.514" x:Name="ComboBoxBook">
+                        <ComboBoxItem Content="Title" IsSelected="True"/>
+                        <ComboBoxItem Content="Author"/>
+                        <ComboBoxItem Content="Publisher"/>
+                    </ComboBox>
+                    <Button Content="Search" HorizontalAlignment="Left" Margin="609,57,0,0" VerticalAlignment="Top" Height="26" Width="54" x:Name="SearchBookBtn" Click="SearchBookBtn_Click">
+
+                    </Button>
+
+                    <Button Content="Create" HorizontalAlignment="Left" Margin="673,57,0,0" VerticalAlignment="Top" Height="26" Width="54" x:Name="CreateBookBtn" Click="CreateBookBtn_Click">
+
+                    </Button>
+
+
+                    <DataGrid Width="{Binding ActualWidth, ElementName=GridPanel}" AutoGenerateColumns="False" x:Name="BookDataGrid" Height="204" VerticalAlignment="Center" HorizontalAlignment="Center" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="BookID" Binding="{Binding BookId}" x:Name="BookID">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Book Title" Binding="{Binding BookName}" x:Name="BookName">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" x:Name="Quantity">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Author" Binding="{Binding AuthorName}" x:Name="AuthorName">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Publisher" Binding="{Binding Publisher.PublisherName}" x:Name="Publisher">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Edit" Click="UpdateBookBtn_Click" x:Name="UpdateBookBtn"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Width" Value="100"/>
+                                    </Style>
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Delete" Click="DeleteBookBtn_Click" x:Name="DeleteBookBtn"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Publisher Management">
+                <Grid>
+                    <TextBlock Text="This is Tab 3"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
